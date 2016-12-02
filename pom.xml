@@ -256,6 +256,42 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- add avro support -->
+		<!-- https://mvnrepository.com/artifact/org.apache.avro/avro-tools -->
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro-tools</artifactId>
+			<version>1.8.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+
+		<!-- jersey -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-grizzly2-http</artifactId>
+			<version>2.22.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jettison</artifactId>
+			<version>2.22.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+			<artifactId>jersey-test-framework-provider-bundle</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
+			<version>2.22.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<distributionManagement>
@@ -428,6 +464,21 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
+
+			<!-- http://www.mojohaus.org/appassembler/appassembler-maven-plugin/usage-program.html -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.10</version>
+				<configuration>
+					<programs>
+						<program>
+							<mainClass>pi.docker.RestApp</mainClass>
+							<id>app</id>
+						</program>
+					</programs>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -463,6 +514,7 @@
 			</activation>
 			<build>
 				<plugins>
+					<!--
 					<plugin>
 						<artifactId>maven-checkstyle-plugin</artifactId>
 						<version>2.17</version>
@@ -480,13 +532,16 @@
 							<failOnViolation>true</failOnViolation>
 							<logViolationsToConsole>true</logViolationsToConsole>
 							<linkXRef>false</linkXRef>
+							-->
 							<!-- if some IDE has integration and requires other place, propose 
 								it -->
+					<!--
 							<configLocation>
 								src/test/resources/checkstyle/checkstyle-config.xml
 							</configLocation>
 						</configuration>
 					</plugin>
+					-->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>findbugs-maven-plugin</artifactId>

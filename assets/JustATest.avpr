@@ -1,0 +1,40 @@
+{
+  "protocol" : "JustATest",
+  "namespace" : "com.neohope.avro.test",
+  "types" : [ {
+    "type" : "record",
+    "name" : "Person",
+    "fields" : [ {
+      "name" : "name",
+      "type" : "string"
+    }, {
+      "name" : "age",
+      "type" : "int"
+    }, {
+      "name" : "sex",
+      "type" : "string"
+    }, {
+      "name" : "address",
+      "type" : "string"
+    } ]
+  } ],
+  "messages" : {
+    "SayHelloTo" : {
+      "request" : [ {
+        "name" : "person",
+        "type" : "Person"
+      } ],
+      "response" : "string"
+    },
+    "Add" : {
+      "request" : [ {
+        "name" : "a",
+        "type" : "int"
+      }, {
+        "name" : "b",
+        "type" : "int"
+      } ],
+      "response" : "int"
+    }
+  }
+}
